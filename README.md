@@ -6,20 +6,20 @@
 
 
 
-<h3 align="left">🔭 Estructura del front end y funcionalidad</h3>
+<h3 align="left">🔭 Estructura del sitio</h3>
 
-      templates/
-      ├── base.html -> template base de la web
-      ├── inicio.html -> langing page
-      ├── cursos.html -> form para cargar cursos
-      ├── estudiantes.html -> form para cargar estudiantes
-      ├── profesores.html -> form para cargar profesores
-      ├── entregas.html -> form para cargar entregas
-      └── buscar.html ->  -> form para buscar comisiones en la BD
+      app1/
+      ├── base.html/ -> template base de la web
+         ├── inicio.html -> langing page
+         ├── cursos.html -> form para cargar cursos
+         ├── estudiantes.html -> form para cargar estudiantes
+         ├── profesores.html -> form para cargar profesores
+         ├── entregas.html -> form para cargar entregas
+         └── buscar.html ->  -> form para buscar comisiones en la BD
 
 <p align="left">
 
-base.html - es la template bas
+base.html - es la template base para las herencias
 
 inicio.html - no tiene funciones es solo una landing page con un link al repo del proyecto.
 
