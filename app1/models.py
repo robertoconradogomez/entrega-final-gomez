@@ -5,6 +5,9 @@ class Curso(models.Model):
     nombre = models.CharField(max_length=30)
     comision = models.IntegerField()
 
+    def __str__(self):
+        return f"Curso: {self.nombre} | Comision: {self.comision}"
+
 class Estudiante(models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)

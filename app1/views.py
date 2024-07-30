@@ -17,3 +17,6 @@ def profesores(request):
 
 def entregas(request):
     return render(request, "app1/entregas.html")
+
+def consulta(request):
+    return render(request, "app1/consulta.html")
