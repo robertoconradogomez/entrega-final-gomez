@@ -3,5 +3,13 @@
 {% block blk_titulo %} Pre entrega 3 | Profesores {% endblock blk_titulo %}
 
 {% block blk_cont %}
-<h1>Página de Profesores</h1>            
+<h1>Carga de Profesores</h1>            
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <table>
+        {{ mi_formulario.as_table }}
+    </table>
+    <input type="submit" value="Enviar">
+</form>            
 {% endblock blk_cont %}

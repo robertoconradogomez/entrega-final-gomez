@@ -3,5 +3,12 @@
 {% block blk_titulo %} Pre entrega 3 | Estudiantes {% endblock blk_titulo %}
 
 {% block blk_cont %}
-<h1>Página de Estudiantes</h1>            
+<h1>Carga de Estudiantes</h1> <form action="" method="POST">
+    {% csrf_token %}
+
+    <table>
+        {{ mi_formulario.as_table }}
+    </table>
+    <input type="submit" value="Enviar">
+</form>            
 {% endblock blk_cont %}

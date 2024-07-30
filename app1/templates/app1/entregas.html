@@ -3,5 +3,13 @@
 {% block blk_titulo %} Pre entrega 3 | Entregas {% endblock blk_titulo %}
 
 {% block blk_cont %}
-<h1>Página de Entregas</h1>            
+<h1>Carga de Entregas</h1>            
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <table>
+        {{ mi_formulario.as_table }}
+    </table>
+    <input type="submit" value="Enviar">
+</form>            
 {% endblock blk_cont %}

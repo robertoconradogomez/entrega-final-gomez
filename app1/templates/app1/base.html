@@ -1,17 +1,3 @@
-<!--
-estructura de la template app1:
-
-      templates/
-      ├── base.html -> template base de la web
-      ├── index.html -> langing page, sin funcionalidades
-      ├── cursos.html -> form para cargar cursos
-      ├── estudiantes.html -> form para cargar estudiantes
-      ├── profesores.html -> form para cargar profesores
-      ├── entregas.html -> form para cargar entregas
-      └── consultas.html ->  -> form para consultar a la DB
-
--->
-
 {% load static %}
 
 <!DOCTYPE html>
@@ -40,7 +26,7 @@ estructura de la template app1:
                 <a class="navbar-brand" href="{% url 'estudiantes' %}">estudiantes</a>
                 <a class="navbar-brand" href="{% url 'profesores' %}">profesores</a>
                 <a class="navbar-brand" href="{% url 'entregas' %}">entregas</a>
-                <a class="navbar-brand" href="{% url 'consultas' %}">consultas</a>
+                <a class="navbar-brand" href="{% url 'buscar' %}">buscar</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">

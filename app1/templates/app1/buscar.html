@@ -1,0 +1,24 @@
+{% extends "app1/base.html" %}
+
+{% block blk_titulo %} Pre entrega 3 | Buscar {% endblock blk_titulo %}
+
+{% block blk_cont %}
+<h1>Página de Búsqueda</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ mi_formulario.as_p }}
+    <button type="submit">Buscar</button>
+</form>
+
+{% if resultados %}
+    <h3>Resultados de la búsqueda</h3>
+    <ul>
+        {% for curso in resultados %}
+            <li>{{ curso.nombre }} - Comisión: {{ curso.comision }}</li>
+        {% empty %}
+            <li>No se encontraron resultados.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock blk_cont %}
