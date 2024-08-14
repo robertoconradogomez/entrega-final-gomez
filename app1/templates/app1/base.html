@@ -30,8 +30,9 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#!">Sign Up</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Log In</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -41,7 +42,7 @@
             <div class="masthead-content">
                 <div class="container px-5">
                     <h1 class="masthead-heading mb-0">Roberto C. Gómez</h1>
-                    <h2 class="masthead-subheading mb-0">Pre entrega 3</h2>
+                    <h2 class="masthead-subheading mb-0">Proyecto final</h2>
                     <a class="btn btn-primary btn-xl rounded-pill mt-5" href="https://github.com/robertoconradogomez/tercera-pre-entrega-gomez" target="_blank">GitHub</a>
                 </div>
             </div>
