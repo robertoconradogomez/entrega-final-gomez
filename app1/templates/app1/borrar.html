@@ -1,0 +1,13 @@
+{% extends "app1/base.html" %}
+
+{% block blk_titulo %} Proyecto final | Cargar Cursos {% endblock blk_titulo %}
+
+{% block blk_cont %}
+<h1>¡¡ Atención !!</h1>
+ <form action="" method="POST">
+    {% csrf_token %}
+    <p>Estas por borrar el curso: {{curso.nombre}} - Comision: {{curso.comision}}</p>
+    <input type="submit" value="Borrar">
+    <input type="button" value="Volver" onclick="window.location.href=\"{% url 'cursos' %}\";">
+ </form>          
+{% endblock blk_cont %}

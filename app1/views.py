@@ -1,82 +1,78 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from app1.forms import *
 from app1.models import *
 
-def inicio(request):
-    return render(request, "app1/inicio.html")
+class InicioView(TemplateView):
+    template_name = "app1/inicio.html"
 
-def cursos(request):
-    if request.method == "POST":
-        mi_formulario = CursoFormulario(request.POST)
-        if mi_formulario.is_valid():
-            informacion = mi_formulario.cleaned_data
+class CursosListView(ListView):
+    model = Curso
+    context_object_name = "cursos"
+    template_name = "app1/cursos.html"
 
-            curso = Curso(nombre=informacion["curso"], comision=informacion["comision"])
-            curso.save()
-            mi_formulario = CursoFormulario()
+class CursoCreateView(CreateView):
+    model = Curso
+    template_name = "app1/crearcurso.html"
+    fields = ["nombre", "comision"]
+    success_url = reverse_lazy("cursos")
 
-    else:
-        mi_formulario = CursoFormulario()
+class CursoDeleteView(DeleteView):
+    model = Curso
+    template_name = "app1/borrar.html"
+    success_url = reverse_lazy("cursos") 
 
-    return render(request, "app1/cursos.html", {"mi_formulario": mi_formulario})
+class CursoUpdateView(UpdateView):
+    model = Curso
+    template_name = "app1/actualizarcurso.html"
+    success_url = reverse_lazy("cursos")
+    fields = ["nombre", "comision"]
 
-def estudiantes(request):
-    if request.method == "POST":
-        mi_formulario = EstudianteFormulario(request.POST)
-        if mi_formulario.is_valid():
-            informacion = mi_formulario.cleaned_data
+class EstudiantesView(FormView):
+    template_name = "app1/estudiantes.html"
+    form_class = EstudianteFormulario
+    success_url = reverse_lazy('estudiantes')
 
-            nombre = Estudiante(nombre=informacion["nombre"], apellido=informacion["apellido"], email=informacion["email"])
-            nombre.save()
-            mi_formulario = EstudianteFormulario()
+    def form_valid(self, form):
+        informacion = form.cleaned_data
+        estudiante = Estudiante(nombre=informacion["nombre"], apellido=informacion["apellido"], email=informacion["email"])
+        estudiante.save()
+        return super().form_valid(form)
 
-    else:
-        mi_formulario = EstudianteFormulario()
+class ProfesoresView(FormView):
+    template_name = "app1/profesores.html"
+    form_class = ProfesorFormulario
+    success_url = reverse_lazy('profesores')
 
-    return render(request, "app1/estudiantes.html", {"mi_formulario": mi_formulario})
+    def form_valid(self, form):
+        informacion = form.cleaned_data
+        profesor = Profesor(nombre=informacion["nombre"], apellido=informacion["apellido"], email=informacion["email"], profesion=informacion["profesion"])
+        profesor.save()
+        return super().form_valid(form)
 
-def profesores(request):
-    if request.method == "POST":
-        mi_formulario = ProfesorFormulario(request.POST)
-        if mi_formulario.is_valid():
-            informacion = mi_formulario.cleaned_data
+class EntregasView(FormView):
+    template_name = "app1/entregas.html"
+    form_class = EntregableFormulario
+    success_url = reverse_lazy('entregas')
 
-            nombre = Profesor(nombre=informacion["nombre"], apellido=informacion["apellido"], email=informacion["email"], profesion=informacion["profesion"])
-            nombre.save()
-            mi_formulario = ProfesorFormulario()
+    def form_valid(self, form):
+        informacion = form.cleaned_data
+        entregable = Entregable(nombre=informacion["nombre"], fecha_de_entrega=informacion["fecha_de_entrega"], entregado=informacion["entregado"])
+        entregable.save()
+        return super().form_valid(form)
 
-    else:
-        mi_formulario = ProfesorFormulario()
+class BuscarView(FormView):
+    template_name = "app1/buscar.html"
+    form_class = BuscarFormulario
 
-    return render(request, "app1/profesores.html", {"mi_formulario": mi_formulario})
+    def form_valid(self, form):
+        informacion = form.cleaned_data
+        comision = informacion.get("comision")
+        resultados = []
 
-def entregas(request):
-    if request.method == "POST":
-        mi_formulario = EntregableFormulario(request.POST)
-        if mi_formulario.is_valid():
-            informacion = mi_formulario.cleaned_data
+        if comision is not None:
+            resultados = Curso.objects.filter(comision=comision)
 
-            nombre = Entregable(nombre=informacion["nombre"], fecha_de_entrega=informacion["fecha_de_entrega"], entregado=informacion["entregado"])
-            nombre.save()
-            mi_formulario = EntregableFormulario()
-
-    else:
-        mi_formulario = EntregableFormulario()
-
-    return render(request, "app1/entregas.html", {"mi_formulario": mi_formulario})
-
-def buscar(request):
-    resultados = []
-    if request.method == "POST":
-        mi_formulario = BuscarFormulario(request.POST)
-        if mi_formulario.is_valid():
-            informacion = mi_formulario.cleaned_data
-            comision = informacion.get("comision")
-
-            if comision is not None:
-                resultados = Curso.objects.filter(comision=comision)
-    else:
-        mi_formulario = BuscarFormulario()
-
-    return render(request, "app1/buscar.html", {"mi_formulario": mi_formulario, "resultados": resultados})
+        return self.render_to_response(self.get_context_data(resultados=resultados, form=form))
 

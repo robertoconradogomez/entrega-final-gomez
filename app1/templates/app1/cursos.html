@@ -3,13 +3,17 @@
 {% block blk_titulo %} Proyecto final | Cursos {% endblock blk_titulo %}
 
 {% block blk_cont %}
-<h1>Carga de Cursos</h1>
-<form action="" method="POST">
-    {% csrf_token %}
+<h1>Listado de Cursos</h1>
 
-    <table>
-        {{ mi_formulario.as_table }}
-    </table>
-    <input type="submit" value="Enviar">
-</form>            
+{% if cursos %}
+    {% for curso in cursos %}
+        <p>Nombre: {{curso.nombre}} | Comision: {{curso.comision}}</p>
+        <a href="{% url 'actualizarcurso' curso.pk %}">Actualizar</a>
+        <a href="{% url 'borrarcurso' curso.pk %}">Borrar</a>
+    {% endfor %}
+{% else %}
+    <p>No hay cursos cargados</p>
+    <input type="button" value="Cargar Curso" onclick="window.location.href='{% url 'crearcurso' %}';">
+{% endif %}
+
 {% endblock blk_cont %}

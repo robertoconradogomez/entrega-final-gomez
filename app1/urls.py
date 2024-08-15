@@ -1,11 +1,14 @@
 from django.urls import path
-from app1 import views
+from app1.views import *
 
 urlpatterns = [
-    path("", views.inicio, name="index"),
-    path("cursos/", views.cursos, name="cursos"),
-    path("estudiantes/", views.estudiantes, name="estudiantes"),
-    path("profesores/", views.profesores, name="profesores"),
-    path("entregas/", views.entregas, name="entregas"),
-    path("buscar/", views.buscar, name="buscar"),
+    path("", InicioView.as_view(), name="index"),
+    path("cursos/", CursosListView.as_view(), name="cursos"),
+    path("estudiantes/", EstudiantesView.as_view(), name="estudiantes"),
+    path("profesores/", ProfesoresView.as_view(), name="profesores"),
+    path("entregas/", EntregasView.as_view(), name="entregas"),
+    path("buscar/", BuscarView.as_view(), name="buscar"),
+    path("crearcurso/", CursoCreateView.as_view(), name="crearcurso"),
+    path("actualizarcurso/<pk>", CursoUpdateView.as_view(), name="actualizarcurso"),
+    path("borrar/<pk>", CursoDeleteView.as_view(), name="borrarcurso"),
 ]

@@ -1,0 +1,14 @@
+{% extends "app1/base.html" %}
+
+{% block blk_titulo %} Proyecto final | Cargar Cursos {% endblock blk_titulo %}
+
+{% block blk_cont %}
+<h1>Cargar Cursos</h1>
+ <form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="submit" value="Enviar">
+ </form>         
+{% endblock blk_cont %}
