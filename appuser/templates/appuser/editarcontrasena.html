@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block blk_titulo %} Proyecto final | Editar Perfil {% endblock blk_titulo %}
+{% block blk_titulo %} Proyecto final | Editar Contraseña {% endblock blk_titulo %}
 
 {% block blk_cont %}
 
@@ -14,12 +14,11 @@
         <form action="" method="POST">
             {% csrf_token %}
             <table>
-                {{ form.as_table }}
+                {{ form }}
             </table>
             <input type="submit" class="btn btn-success btn-sm" value="Actualizar">
-            <a href="{% url 'editarcontrasena' %}" class="btn btn-success btn-sm">Cambiar Contraseña</a>
-            <a href="{% url 'index' %}" class="btn btn-danger btn-sm">Cancelar</a>
-            </form>
+            <a href="{% url 'editarusuario' %}" class="btn btn-danger btn-sm">Cancelar</a>
+         </form>
     </div>
 </div>
 

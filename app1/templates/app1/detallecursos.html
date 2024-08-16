@@ -11,8 +11,8 @@
             <tr>
                 <td>
                     <span class="h6">Nombre:</span> {{ curso.nombre }} | 
-                    <span class="h6">Comisión:</span> {{ curso.comision }}<br>
-                    <p><strong>Detalle:</strong> {{ curso.detalle }}</p>
+                    <span class="h6">Comisión:</span> {{ curso.comision }}<br><br>
+                    <p><strong>Detalle:</strong><br> {{ curso.detalle }}</p><br>
                     <a href="{% url 'cursos' %}" class="btn btn-success btn-sm">Volver</a>
                 </td>
             </tr>

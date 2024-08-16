@@ -1,16 +1,12 @@
 from django.urls import path
-from app1.views import *
+from app1 import views
 
 urlpatterns = [
-    path("", InicioView.as_view(), name="index"),
-    path("cursos/", CursosListView.as_view(), name="cursos"),
-    #path("estudiantes/", EstudiantesView.as_view(), name="estudiantes"),
-    #path("profesores/", ProfesoresView.as_view(), name="profesores"),
-    #path("entregas/", EntregasView.as_view(), name="entregas"),
-    #path("buscar/", BuscarView.as_view(), name="buscar"),
-    path("crearcurso/", CursoCreateView.as_view(), name="crearcurso"),
-    path("curso/<int:pk>/", CursoDetailView.as_view(), name="detallecursos"),
-    path("actualizarcurso/<pk>", CursoUpdateView.as_view(), name="actualizarcurso"),
-    path("borrar/<pk>", CursoDeleteView.as_view(), name="borrarcurso"),
-    path("about", AboutView.as_view(), name="about"),
+    path("", views.InicioView.as_view(), name="index"),
+    path("cursos/", views.CursosListView.as_view(), name="cursos"),
+    path("crearcurso/", views.CursoCreateView.as_view(), name="crearcurso"),
+    path("curso/<int:pk>/", views.CursoDetailView.as_view(), name="detallecursos"),
+    path("actualizarcurso/<pk>", views.CursoUpdateView.as_view(), name="actualizarcurso"),
+    path("borrar/<pk>", views.CursoDeleteView.as_view(), name="borrarcurso"),
+    path("about", views.AboutView.as_view(), name="about"),
 ]

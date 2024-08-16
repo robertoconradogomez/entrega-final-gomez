@@ -1,8 +1,33 @@
 from django.shortcuts import render, redirect
+from appuser.forms import UserRegisterForm, UserEditForm
+from django.views.generic import View
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views  import PasswordChangeView
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout as auth_logout
-from appuser.forms import UserRegisterForm
-from django.views.generic import View
+from django.urls import reverse_lazy
+
+#Editar perfil
+@login_required
+def editar_perfil(request):
+    usuario = request.user
+
+    if request.method == "POST":
+        mi_formulario = UserEditForm(request.POST, instance=usuario)
+        if mi_formulario.is_valid():
+            mi_formulario.save()
+            return redirect('editarusuario')
+    else:
+        mi_formulario = UserEditForm(instance=usuario)
+
+    return render(request, "appuser/editarusuario.html", {"form": mi_formulario})
+
+#cambair contraseña
+class CambiarContrasenia(LoginRequiredMixin, PasswordChangeView):
+    template_name = "appuser/editarcontrasena.html"
+    success_url = reverse_lazy("editarusuario")
+
 
 #Logout
 class CustomLogoutView(View):
