@@ -7,7 +7,7 @@
  <form action="" method="POST">
     {% csrf_token %}
     <p>Estas por borrar el curso: {{curso.nombre}} - Comision: {{curso.comision}}</p>
-    <input type="submit" value="Borrar">
-    <input type="button" value="Volver" onclick="window.location.href=\"{% url 'cursos' %}\";">
+    <input type="submit" class="btn btn-danger btn-sm" value="Borrar">
+    <a href="{% url 'cursos' %}" class="btn btn-success btn-sm">Volver</a>
  </form>          
 {% endblock blk_cont %}

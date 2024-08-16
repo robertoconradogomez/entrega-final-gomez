@@ -9,6 +9,7 @@
     <table>
         {{form.as_table}}
     </table>
-    <input type="submit" value="Enviar">
+    <input type="submit" class="btn btn-success btn-sm" value="Cargar Curso">
+    <a href="{% url 'cursos' %}" class="btn btn-danger btn-sm">Volver</a>
  </form>         
 {% endblock blk_cont %}

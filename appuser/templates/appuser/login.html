@@ -11,14 +11,14 @@
     <div class="d-flex flex-column">
 
         <p class="fs-5 fw-bold">{{ msg_login }}</p>
-
+        
         <form action="" method="POST">
             {% csrf_token %}
-
+            <table>
             {{ form.as_p }}
-            <input type="submit" value="Iniciar sesión">
-
-        </form>
+            </table>
+            <input type="submit" class="btn btn-success btn-sm" value="Iniciar sesión">
+         </form>
     </div>
 </div>
 
