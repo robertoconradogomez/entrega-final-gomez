@@ -1,0 +1,24 @@
+{% extends "app1/base.html" %}
+
+{% block blk_titulo %} Proyecto final | Detalles del Curso {% endblock blk_titulo %}
+
+{% block blk_cont %}
+<h1>Detalle del Curso</h1>
+
+{% if curso %}
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <td>
+                    <span class="h6">Nombre:</span> {{ curso.nombre }} | 
+                    <span class="h6">Comisión:</span> {{ curso.comision }}<br>
+                    <p><strong>Detalle:</strong> {{ curso.detalle }}</p>
+                    <a href="{% url 'cursos' %}" class="btn btn-success btn-sm">Volver</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% else %}
+    <p>No se encontraron detalles del curso.</p>
+{% endif %}
+{% endblock blk_cont %}

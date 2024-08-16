@@ -23,13 +23,10 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'index' %}">inicio</a>
                 <a class="navbar-brand" href="{% url 'cursos' %}">cursos</a>
-                <a class="navbar-brand" href="{% url 'buscar' %}">buscar</a>
                 {% if request.user.is_superuser %}
                 <a class="navbar-brand" href="{% url 'crearcurso' %}">crear cursos</a>
-                <a class="navbar-brand" href="{% url 'estudiantes' %}">estudiantes</a>
-                <a class="navbar-brand" href="{% url 'profesores' %}">profesores</a>
-                <a class="navbar-brand" href="{% url 'entregas' %}">entregas</a>
                 {% endif %}
+                <a class="navbar-brand" href="{% url 'about' %}">About</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
@@ -61,7 +58,7 @@
         {% endblock %}
         <!-- Footer-->
         <footer class="py-5 bg-black">
-            <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; | Roberto C. Gómez | Entrega Final | 2024</p></div>
+            <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; | Roberto C. Gómez | Proyecto final | 2024</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

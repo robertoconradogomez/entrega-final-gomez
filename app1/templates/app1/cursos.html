@@ -13,7 +13,7 @@
                 <td>
                     <span class="h6">Nombre:</span> {{ curso.nombre }} | 
                     <span class="h6">Comision:</span> {{ curso.comision }}<br></br>
-                    <a href="#" class="btn btn-success btn-sm">Ver</a>
+                    <a href="{% url 'detallecursos' curso.pk %}" class="btn btn-success btn-sm">Ver</a>
                     {% if request.user.is_superuser %}
                     <a href="{% url 'actualizarcurso' curso.pk %}" class="btn btn-success btn-sm">Editar</a>
                     <a href="{% url 'borrarcurso' curso.pk %}" class="btn btn-danger btn-sm">Borrar</a>

@@ -4,12 +4,13 @@ from django.contrib.auth import login, authenticate, logout as auth_logout
 from appuser.forms import UserRegisterForm
 from django.views.generic import View
 
-
+#Logout
 class CustomLogoutView(View):
     def get(self, request, *args, **kwargs):
         auth_logout(request)
         return redirect('login')
-    
+
+#Login    
 def login_request(request):
 
     msg_login = ""
@@ -32,6 +33,8 @@ def login_request(request):
     form = AuthenticationForm()
     return render(request, "appuser/login.html", {"form": form, "msg_login": msg_login})
 
+
+#Crear Usuario
 def register(request):
     msg_register = ""
     if request.method == 'POST':
