@@ -23,17 +23,22 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'index' %}">inicio</a>
                 <a class="navbar-brand" href="{% url 'cursos' %}">cursos</a>
+                <a class="navbar-brand" href="{% url 'buscar' %}">buscar</a>
+                {% if request.user.is_superuser %}
                 <a class="navbar-brand" href="{% url 'crearcurso' %}">crear cursos</a>
                 <a class="navbar-brand" href="{% url 'estudiantes' %}">estudiantes</a>
                 <a class="navbar-brand" href="{% url 'profesores' %}">profesores</a>
                 <a class="navbar-brand" href="{% url 'entregas' %}">entregas</a>
-                <a class="navbar-brand" href="{% url 'buscar' %}">buscar</a>
+                {% endif %}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+                        {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Sign Up</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

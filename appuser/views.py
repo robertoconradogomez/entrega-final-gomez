@@ -1,9 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout as auth_logout
 from appuser.forms import UserRegisterForm
+from django.views.generic import View
 
-# Create your views here.
+
+class CustomLogoutView(View):
+    def get(self, request, *args, **kwargs):
+        auth_logout(request)
+        return redirect('login')
+    
 def login_request(request):
 
     msg_login = ""
@@ -27,17 +33,18 @@ def login_request(request):
     return render(request, "appuser/login.html", {"form": form, "msg_login": msg_login})
 
 def register(request):
-
     msg_register = ""
     if request.method == 'POST':
-
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, "app1/inicio.html")
-        
-        msg_register = "Error en los datos ingresados"
+            return redirect('login')
+        else:
+            msg_register = "Error en los datos ingresados: " + str(form.errors)
 
-    form = UserRegisterForm()
-    return render(request,"appuser/registro.html" , {"form":form, "msg_register":msg_register})
+    else:
+        form = UserRegisterForm()
+    
+    return render(request, "appuser/registro.html", {"form": form, "msg_register": msg_register})
+
 
