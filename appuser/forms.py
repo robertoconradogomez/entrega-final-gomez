@@ -13,9 +13,10 @@ class UserRegisterForm(UserCreationForm):
 
 class UserEditForm(UserChangeForm):
     password = None
-    email = forms.EmailField(label="Ingrese su email")
+    email = forms.EmailField(label="Email")
     last_name = forms.CharField(label="Apeliido", required=False)
     first_name = forms.CharField(label="Nombre", required=False)
+    imagen = forms.ImageField(label="Avatar", required=False)
 
     class Meta:
         model = User
