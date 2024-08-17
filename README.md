@@ -8,44 +8,49 @@
 
 <h3 align="left">🔭 Estructura del sitio</h3>
 
-      app1/
-      ├── base.html/ -> template base de la web
-         ├── inicio.html -> langing page
-         ├── cursos.html -> form para cargar cursos
-         ├── estudiantes.html -> form para cargar estudiantes
-         ├── profesores.html -> form para cargar profesores
-         ├── entregas.html -> form para cargar entregas
-         └── buscar.html ->  -> form para buscar comisiones en la BD
+      inicio.html es una landing page, con acceso al repositorio y los casos de prueba  
+
+      La idea era crear una web para una institución educativa, que le permita gestionar sus cursos, mostrarlos, editarlos y borrarlos Ademas de gestionar sus usuarios, respetando la idea de "blog" propuestas   
+      para esto, en la página donde se listan los cursos, se puede ingresar en "ver" y ver los detalles completos de los mismos.   
+
+      - Realiza CRUD   
+      - Gestiona Usuarios de forma completa   
+      - Gestiona cursos y sus detalles de forma completa   
+
+      app1/   
+
+      Es la web completa, donde se puede ver un listado de cursos, about, acceso a los detalles de cada curso, y acceso a la appuser para gestionar los usuarios.   
+
 
       appuser/
-      ├── base.html/ -> template base de la web
-         ├── inicio.html -> langing page
-         ├── cursos.html -> form para cargar cursos
-         ├── estudiantes.html -> form para cargar estudiantes
-         ├── profesores.html -> form para cargar profesores
-         ├── entregas.html -> form para cargar entregas
-         └── buscar.html ->  -> form para buscar comisiones en la BD
+
+      gestiona todo lo referente a los usuarios, creación, modificación, avatares, etc.   
+
+      hay tres tipos de usuario:   
+      
+      "sin usuario" | solo tiene acceso a ver los cursos cargados y sus detalles, inicio y about.
+      "usuario genérico" | mismos permisos que el anterior, ademas puede gestionar su usuario, cambiar sus datos y el avatar.
+      "staff" | los mismo accesos que el anterior, pero puede editar los cursos cargados.
+      "Admin" | Todos los permisos, ademas de poder crear cursos nuevos y borrar los existentes desde la misma web.
+      
 
 <p align="left">
 
-base.html - es la template base para las herencias
+---------------------------
 
-inicio.html - no tiene funciones es solo una landing page con un link al repo del proyecto.
-
-cursos.html/estudiantes.html/profesores.html/entregas.html - es donde se muestran los formularios para cargar los datos a la BD
-
-buscar.html - es donde se muestra el formulario para buscar comisiones en la BD.
+Se cambiaron cosas como el manejo de avatares, ahora al crear cualquier usaurio, el formulario agrega un avatar por defecto alojado en media/avatares.   
+Se cambiaron algunas cosas esteticas como botones y navBar.
 
 ---------------------------
 
-Se cambiaron cosas minimas, como al cargar algun dato en la BD no redirecciones de nuevo a inicio.html, además al cargar algun dato, se vuelve a poner los campos de los formularios en blanco.
+Lista de usuarios para probar:   
 
----------------------------
+- Admin   
+Usuario: rgomez   
+Pass: Rober33832011$ 
 
-Super User: rgomez
-Pass: rober33832011
-
-User: rgomez2
-Pass: rober_33832011
+- Staff   
+Usuario: staffuser   
+Pass: Viernes2024   
 
 </p>
